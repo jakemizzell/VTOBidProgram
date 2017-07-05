@@ -38,6 +38,8 @@ int main(int argc, char **argv) {
         printf("%s",name);
         printf("\n");
     } 
+    else 
+        name = "MIZZELL,";
     fprintf(stdout, "\nCalculating remaining lines for %s\n", in);
     findRemaining(name,fp);
     fprintf(stdout,"are left for you!\n\n");

@@ -1,4 +1,4 @@
-//**
+/**
  * main.c
  *
  * Written by Jake Mizzell
@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "scanner.h"
 
 void findRemaining (char *, FILE *);
@@ -33,7 +34,8 @@ int main(int argc, char **argv) {
         //name = argv[2];
     fprintf(stdout, "\nCalculating remaining lines\n");
     findRemaining(name,fp);
-    printf("\nProgram Finished!\n\n");
+    fprintf(stdout,"are left for you!\n");
+    fprintf(stdout, "\nProgram Finished!\n\n");
     fclose(fp);
     return 0;
 }
@@ -66,13 +68,18 @@ void findRemaining(char *name, FILE *fp) {
         str = readToken(fp);
     //find the remaining slots
     printf("\nBids ");
-    int i = readInt(fp);
+    char *c = readToken(fp);
     while (!feof(fp)) {
+        int j;
+        for (j = 0; j < strlen(c); j++) {
+            if (!isdigit(c[j]))
+                return;
+        }
+        int i = atoi(c);
         int bid = findBid(array,fp);
-        printf("%d ",bid);
-        i = readInt(fp);
+        fprintf(stdout, "%d ",bid);
+        c = readToken(fp);
     }
-    printf("are left for you!\n");
 }
 
 int findBid(int *array, FILE *fp) {

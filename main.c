@@ -28,13 +28,14 @@ int main(int argc, char **argv) {
         exit(1);
     }
     char *name;
+    char *in;
     if (argv[1] == NULL) {
         fprintf(stdout, "Enter last Name: ");
-        char *in = readToken(stdin);
-        char *c
-        char *name = malloc(strlen(in) + 2);
+        in = readToken(stdin);
+        char *comma = ","
+        char *name = malloc(strlen(in) + strlen(comma) + 1);
         strcpy(name, in);
-        strcat(name,",");
+        strcat(name, comma);
         printf("%s",name);
         printf("\n");
     } 

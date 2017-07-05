@@ -32,14 +32,20 @@ int main(int argc, char **argv) {
     if (argv[1] == NULL) {
         fprintf(stdout, "Enter last Name: ");
         in = readToken(stdin);
+        int i;
+        for(i = 0; in[i]; i++) {
+            putchar (toupper(in[i]));
+        }
         name = malloc(strlen(in) + 2);
         strcpy(name, in);
         strcat(name, ",");
         printf("%s",name);
         printf("\n");
     } 
-    else 
+    else {
+        in = "MIZZELL";
         name = "MIZZELL,";
+    }
     fprintf(stdout, "\nCalculating remaining lines for %s\n", in);
     findRemaining(name,fp);
     fprintf(stdout,"are left for you!\n\n");

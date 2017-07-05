@@ -28,14 +28,19 @@ int main(int argc, char **argv) {
         exit(1);
     }
     char *name;
-    //if (argv[2] == NULL)
-        name = "MIZZELL,";
-    //else
-        //name = argv[2];
+    if (argv[1] == NULL) {
+        fprintf(stdout, "Enter last Name: ");
+        char *in = readToken(stdin);
+        char *c
+        char *name = malloc(strlen(in) + 2);
+        strcpy(name, in);
+        strcat(name,",");
+        printf("%s",name);
+        printf("\n");
+    } 
     fprintf(stdout, "\nCalculating remaining lines\n");
     findRemaining(name,fp);
-    fprintf(stdout,"are left for you!\n");
-    fprintf(stdout, "\nProgram Finished!\n\n");
+    fprintf(stdout,"are left for you!\n\n");
     fclose(fp);
     return 0;
 }

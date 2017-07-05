@@ -8,7 +8,6 @@ Example Output:
 Calculating remaining lines   
 
 Bids 25 21 29 31 are left for you!   
-
 ```
 
 I have it set to use a text file called bids.txt in the same directory as it is. Run by:

@@ -1,4 +1,4 @@
-/**
+//**
  * main.c
  *
  * Written by Jake Mizzell
@@ -16,12 +16,12 @@ int findBid(int *,FILE *);
 int checkArray(int, int *);
 
 int main(int argc, char **argv) {
-    if (argc != 2) {
-        fprintf(stderr, "Execute with \'bid.exe filename.txt\'\n");
+    if (argc != 1) {
+        fprintf(stderr, "Execute with \'.\bid'\n");
         exit(1);
     }
     FILE *fp;
-    fp = fopen(argv[1], "r");
+    fp = fopen("bids.txt", "r");
     if (fp == NULL) {
         fprintf(stderr, "File didn't open, check file name\n");
         exit(1);

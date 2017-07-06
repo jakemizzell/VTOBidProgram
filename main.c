@@ -18,7 +18,7 @@ int checkArray(int, int *);
 
 int main(int argc, char **argv) {
     if (argc != 1) {
-        fprintf(stderr, "Execute with \'.\bid'\n");
+        fprintf(stderr, "Execute with './bid'\n");
         exit(1);
     }
     FILE *fp;
@@ -29,24 +29,25 @@ int main(int argc, char **argv) {
     }
     char *name;
     char *in;
-    if (argv[1] == NULL) {
+/*    if (argv[1] == NULL) {
         fprintf(stdout, "Enter last Name: ");
         in = readToken(stdin);
-        int i;
-        for(i = 0; in[i]; i++) {
-            putchar (toupper(in[i]));
+        char *s = in;
+        //converts everything to uppercase since the text file is
+        while (*s) {
+            *s = toupper((unsigned char) *s);
+            s++;
         }
+        //adds a comma at the end
         name = malloc(strlen(in) + 2);
         strcpy(name, in);
         strcat(name, ",");
-        printf("%s",name);
-        printf("\n");
-    } 
-    else {
-        in = "MIZZELL";
-        name = "MIZZELL,";
-    }
-    fprintf(stdout, "\nCalculating remaining lines for %s\n", in);
+    }*/
+//    else {
+    in = "MIZZELL";
+    name = "MIZZELL,";
+//    }
+    fprintf(stdout, "\nCalculating remaining lines for %s!\n", in);
     findRemaining(name,fp);
     fprintf(stdout,"are left for you!\n\n");
     fclose(fp);

@@ -44,8 +44,8 @@ int main(int argc, char **argv) {
         strcat(name, ",");
     }*/
 //    else {
-    name = "MIZZELL,";
-    in = "MIZZELL";
+    name = "BIGWOOD,";
+    in = "BIGWOOD";
 //    }
     //check and make sure that the name exist
     int found = 0;

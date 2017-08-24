@@ -44,9 +44,33 @@ int main(int argc, char **argv) {
         strcat(name, ",");
     }*/
 //    else {
-    in = "MIZZELL";
     name = "MIZZELL,";
+    in = "MIZZELL";
 //    }
+    //check and make sure that the name exist
+    int found = 0;
+    char *str = readToken(fp);
+    //loop to run until it finds the name you want
+    while (!feof(fp)) {
+        //if the name exist in the file then set found to 1
+        if (strcmp(str,name) == 0)
+            found = 1;
+    str = readToken(fp);
+    }
+    //if you didn't find the name
+    if (found == 0) {
+        printf("\n%s not found in bids.txt\n\n", in);
+        return 0;
+    }
+    //if you did find the name
+    else {
+        fclose(fp);
+        fp = fopen("bids.txt", "r");
+        if (fp == NULL) {
+            fprintf(stderr, "File didn't open, check file name\n");
+            exit(1);
+        }
+    }
     fprintf(stdout, "\nCalculating remaining lines for %s!\n", in);
     findRemaining(name,fp);
     fprintf(stdout,"are left for you!\n\n");

@@ -90,16 +90,17 @@ void findRemaining(char *name, FILE *fp) {
         str = readToken(fp);
     }
     //Used for error checking
-    /*printf("Array as is\n");
-    for (int i = 1; i < 100; i++) {
+    printf("Array as is\n");
+    int i;
+    for (i = 1; i < 100; i++) {
         printf("%d:%d ",i,array[i]);
     }
     printf("\nRemaining slots\n");
-    for (int i = 1; i < 100; i++) {
+    for (i = 1; i < 100; i++) {
         if (array[i] == 0)
             printf("%d:%d ",i,array[i]);
     }
-    printf("\n\n");*/
+    printf("\n\n");
     //read the file through CPT
     str = readToken(fp);
     while (strcmp(str,"CPT") != 0)
@@ -122,7 +123,7 @@ void findRemaining(char *name, FILE *fp) {
 
 int findBid(int *array, FILE *fp) {
     int bid = readInt(fp);
-    //printf("Looking at bid %d",bid);
+    //printf("Looking at bid %d\n",bid);
     int avaliable = checkArray(bid,array);
     if (avaliable == 1)
         return bid;

@@ -44,8 +44,8 @@ int main(int argc, char **argv) {
         strcat(name, ",");
     }*/
 //    else {
-    name = "BIGWOOD,";
-    in = "BIGWOOD";
+    name = "MIZZELL,";
+    in = "MIZZELL";
 //    }
     //check and make sure that the name exist
     int found = 0;
@@ -57,12 +57,12 @@ int main(int argc, char **argv) {
             found = 1;
     str = readToken(fp);
     }
-    //if you didn't find the name
+    //if you didn't find the name exit the program
     if (found == 0) {
         printf("\n%s not found in bids.txt\n\n", in);
         return 0;
     }
-    //if you did find the name
+    //if you did find the name close and open the program so you can search it
     else {
         fclose(fp);
         fp = fopen("bids.txt", "r");
@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
 void findRemaining(char *name, FILE *fp) {
     int array[100] = { 0 };
     char *str = readToken(fp);
-    //loop to run until it finds the name you want
+    //loop to run until it finds the name you want while filling up the array
     while (strcmp(str,name) != 0) {
         //when it finds "CPT" because there are about to be the numbers
         if(strcmp(str, "CPT") == 0) {
@@ -104,22 +104,28 @@ void findRemaining(char *name, FILE *fp) {
     str = readToken(fp);
     while (strcmp(str,"CPT") != 0)
         str = readToken(fp);
-    //find the remaining slots
+    //find and print the remaining slots
     printf("\nBids ");
     char *c = readToken(fp);
     while (!feof(fp)) {
         int j;
+        //make sure what you read is a digit
         for (j = 0; j < strlen(c); j++) {
             if (!isdigit(c[j]))
                 return;
         }
-        int i = atoi(c);
-        int bid = findBid(array,fp);
-        fprintf(stdout, "%d ",bid);
+        //convert it to integer since it's a digit
+        int bid = atoi(c);
+        //see if it is avaliable
+        int bool = checkArray(bid,array);
+        //if it's avalible print it
+        if (bool == 1)
+            fprintf(stdout, "%d ",bid);
         c = readToken(fp);
     }
 }
 
+//Function to read file and fill array
 int findBid(int *array, FILE *fp) {
     int bid = readInt(fp);
     //printf("Looking at bid %d",bid);
@@ -130,9 +136,11 @@ int findBid(int *array, FILE *fp) {
         findBid(array,fp);
 }
 
+//Function to see if the slot is avaliable
 int checkArray(int bid, int *array) {
     int i = 0;
     for (i = 1; i < 100; i++) {
+        //if it's that bid number and it's not filled, fill it, and return 1
         if (i == bid && array[i] == 0) {
             array[i] = 1;
             return 1;

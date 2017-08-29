@@ -90,7 +90,7 @@ void findRemaining(char *name, FILE *fp) {
         str = readToken(fp);
     }
     //Used for error checking
-    printf("Array as is\n");
+    /*printf("Array as is\n");
     int i;
     for (i = 1; i < 100; i++) {
         printf("%d:%d ",i,array[i]);
@@ -101,6 +101,7 @@ void findRemaining(char *name, FILE *fp) {
             printf("%d:%d ",i,array[i]);
     }
     printf("\n\n");
+    */
     //read the file through CPT
     str = readToken(fp);
     while (strcmp(str,"CPT") != 0)
